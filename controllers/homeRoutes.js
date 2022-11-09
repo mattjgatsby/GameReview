@@ -5,12 +5,15 @@ const { default: axios } = require('axios');
 const axios = require('axios').default;
 
 const router = require('express').Router();
+const { User, Review, Games } = require('../models');
 require('dotenv').config();
 
 
 
 router.get('/', async (req, res) => {
-
+    try {
+        const homeDat
+    }
     let requestURL = `https://api.rawg.io/api/games?key=${process.env.API_KEY}`;
 
     axios.get(requestURL)

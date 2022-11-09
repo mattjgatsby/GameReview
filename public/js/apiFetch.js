@@ -1,6 +1,8 @@
 const router = require('express').Router();
 require('dotenv').config();
 
+//https://api.rawg.io/api/games/{id} - querying for game by slug id
+
 
 async function getApiRawg() {
     console.log("Inside apiRawg");
