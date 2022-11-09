@@ -15,6 +15,13 @@ Games.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    game_description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8],
+      },
+    },
     release_date: {
       type: DataTypes.INTEGER,
       allowNull: false,
