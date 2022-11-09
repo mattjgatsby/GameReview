@@ -11,9 +11,7 @@ require('dotenv').config();
 
 
 router.get('/', async (req, res) => {
-    try {
-        const homeDat
-    }
+
     let requestURL = `https://api.rawg.io/api/games?key=${process.env.API_KEY}`;
 
     axios.get(requestURL)
