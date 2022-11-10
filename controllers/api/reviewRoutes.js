@@ -54,6 +54,21 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    const postReview = await Review.create({
+      review_body: req.body.review_body,
+      review_date: req.body.review_date,
+    });
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(postReview);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.put("/:id", async (req, res) => {
   const updatedReview = await Review.update(
     {
