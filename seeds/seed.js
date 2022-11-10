@@ -13,9 +13,9 @@ const seedDatabase = async () => {
         returning: true
     });
 
+    const games = await Games.bulkCreate(gamesData);
     const reviews = await Review.bulkCreate(userReview);
 
-    const games = await Games.bulkCreate(gamesData);
 
     process.exit(0);
 }
