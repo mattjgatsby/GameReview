@@ -21,10 +21,10 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
     // retro fit this code to our db
     try {
-      const gamesData = await Games.findbyPk(req.params.id, {
+      const gamesData = await Games.findByPk(req.params.id, {
         include: [{
             model: Review,
             attributes: ["id", "review_body", "review_date", "user_id"],
