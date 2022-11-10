@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
       ],
     });
     console.log(gamesData
-        );const game = gamesData.map(games) => game.get({plain:true});
+        );const game = gamesData.map((game) => game.get({plain: true}));
     console.log("game", game);
     res.status(200).json(gamesData);
     console.log()
