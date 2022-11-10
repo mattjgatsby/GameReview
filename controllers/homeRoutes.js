@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
             // console.log(apiResponse);
 
             let smallData = [];
-            for (let i = 0; i < apiResponse.data.results.length; i++) {
+            for (let i = 0; i < 5; i++) {
                 let temp = {
                     name: apiResponse.data.results[i].name,
                     image: apiResponse.data.results[i].background_image,
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 
                 smallData.push(temp);
 
-                console.log("this is smalldata:  " + smallData);
+                // console.log("this is smalldata:  " + smallData);
                 // return smallData.json();
             }
 
@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
         })
         .then(displayData => {
 
-            console.log("this is sent to handlebars   " + displayData);
+            // console.log("this is sent to handlebars   " + displayData);
 
             res.render('homepage', {
                 // pass the data to handlebars
