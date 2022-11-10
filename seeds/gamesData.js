@@ -12,7 +12,7 @@ const gamesData = [
     user_id: 1,
   },
   {
-    games_name: "Call of Dooty",
+    games_name: "Call of Duty",
     game_description: "This is a video game description string.",
     release_date: 11 / 01 / 2022,
     metacritic: 90,
