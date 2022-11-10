@@ -1,19 +1,96 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const { User, Review, Games } = require("../../models");
 
+router.get("/", async (req, res) => {
+  try {
+    const reviewData = await Review.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["id", "user_name"],
+        },
+        {
+          model: Games,
+          attributes: ["id", "games_name"],
+        },
+      ],
+    });
+    res.status(200).json(reviewData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  // retro fit this code to our db
+  // try {
+  //     const userData = await User.findAll({
+  //         include: [{ model: Post }, { model: Comment }]
+  //     })
+  //     res.status(200).json(userData)
+  // } catch (err) {
+  //     res.status(500).json(err);
+  // }
+});
 
-router.get('/', async (req, res) => {
+router.get("/:id", async (req, res) => {
+  try {
+    const reviewData = await Review.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["id", "user_name"],
+        },
+        {
+          model: Games,
+          attributes: ["id", "games_name"],
+        },
+      ],
+    });
+    if (!reviewData) {
+      res.status(404).json({ message: "No review found with this id" });
+      return;
+    }
+    res.status(200).json(reviewData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-    // retro fit this code to our db
-    // try {
-    //     const userData = await User.findAll({
-    //         include: [{ model: Post }, { model: Comment }]
-    //     })
-    //     res.status(200).json(userData)
-    // } catch (err) {
-    //     res.status(500).json(err);
-    // }
+router.post("/", async (req, res) => {
+  try {
+    const postReview = await Review.create({
+      review_body: req.body.review_body,
+      review_date: req.body.review_date,
+    });
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(postReview);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-})
+router.put("/:id", async (req, res) => {
+  const updatedReview = await Review.update(
+    {
+      title: req.body.title,
+      review_body: req.body.review_body,
+      review_date: req.body.review_date,
+    },
+    {
+      where: {
+        review_id: req.params.review_id,
+      },
+    }
+  );
+  res.json(updatedReview);
+});
 
-
+router.delete("/:id", async (req, res) => {
+  const deletedReview = await Review.destroy({
+    where: {
+      review_id: req.params.review_id,
+    },
+  });
+  res.json(deletedReview);
+});
 module.exports = router;
