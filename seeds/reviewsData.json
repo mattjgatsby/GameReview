@@ -1,0 +1,20 @@
+[
+    {
+    "review_body": "This game is so much fun!",
+    "review_date": 2021-07-06,
+    "user_id": 1,
+    "game_id": 1
+},
+{
+    "review_body": "Too complicated to figure out",
+    "review_date": 2022-11-09,
+    "user_id": 2,
+    "game_id": 2
+},
+{
+    "review_body": "How am I supposed to get an elelphant when the economy is causing doctors to become clowns",
+    "review_date": 2022-10-27,
+    "user_id": 3,
+    "game_id": 3
+}
+]
