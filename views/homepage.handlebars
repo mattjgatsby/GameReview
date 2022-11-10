@@ -1,3 +1,11 @@
 <h4>Inside homepage</h4>
 
-<script src="./js/apiFetch.js"></script>
+{{#each displayData as |game|}}
+
+<h1>{{name}}</h1>
+<img src="{{image}}" alt="top Game">
+<h4>{{metacritic}}</h4>
+
+{{/each}}
+
+{{!-- <script src="./js/apiFetch.js"></script> --}}

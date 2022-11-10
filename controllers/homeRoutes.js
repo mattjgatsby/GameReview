@@ -17,17 +17,28 @@ router.get('/', (req, res) => {
         url: `https://api.rawg.io/api/games?key=${process.env.API_KEY}`
     })
         .then(apiResponse => {
-            console.log(apiResponse);
+            // console.log(apiResponse);
 
             let smallData = [];
             for (let i = 0; i < apiResponse.data.results.length; i++) {
+                let temp = {
+                    name: apiResponse.data.results[i].name,
+                    image: apiResponse.data.results[i].background_image,
+                    metacritic: apiResponse.data.results[i].metacitic
+                }
 
-                smallData.push(apiResponse.data.results[i].name);
-                console.log("this is smalldata" + smallData);
+
+                smallData.push(temp);
+
+                console.log("this is smalldata:  " + smallData);
+                // return smallData.json();
             }
 
+            return smallData;
         })
         .then(displayData => {
+
+            console.log("this is sent to handlebars   " + displayData);
 
             res.render('homepage', {
                 // pass the data to handlebars
