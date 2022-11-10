@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Games extends Model {}
+class Games extends Model { }
 
 Games.init(
   {
@@ -23,7 +23,7 @@ Games.init(
       },
     },
     release_date: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     metacritic: {
