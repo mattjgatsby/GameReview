@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 })
 
 // get by id
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
 
     try {
         const userData = await User.findByPk(req.params.id, {
@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
 
     try {
-        const userData = await User.create()
+        const userData = await User.create(req.body)
         res.status(200).json(`Thanks for joining the discussion ${req.body.user_name}`)
     } catch (err) {
         res.status(500).json(err);
@@ -47,17 +47,16 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
 
     try {
-        // match the email
-        const userData = await User.findByPk(req.params.id, {
-        })
+        // match the id
+        const userData = await User.update({
+            password: req.body.password
+        },
+            { where: { id: req.params.id } })
         if (!userData) {
             res.status(404).json("User not found!")
         }
-        // change the password (req.body.password)
-        User.update(req.body, {
-            password: req.body.password
-        }, { where: req.params.id })
 
+        res.status(200).json("Updated password");
     } catch (err) {
         res.status(500).json(err);
     }
@@ -82,7 +81,7 @@ router.delete('/:id', async (req, res) => {
 router.post('/login', async (req, res) => {
 
     try {
-        const userData = await User.findOne({ where: { email: req.body.email } });
+        const userData = await User.findOne({ where: { email: req.body.user_name } });
         if (!userData) {
             res.status(404).json("User Not Found")
         }
