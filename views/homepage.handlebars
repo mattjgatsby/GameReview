@@ -1,41 +1,10 @@
-{{!-- <h4>Inside homepage</h4>
+<!--Carousel for home page-->
+<div
+  id="carouselExampleIndicators"
+  class="carousel slide container-sm"
+  data-ride="carousel"
+>
 
-{{#each displayData as |game|}}
-
-<h1>{{name}}</h1>
-<img src="{{image}}" alt="top Game">
-<h4>{{metacritic}}</h4>
-
-{{/each}} --}}
-
-{{! <script src="./js/apiFetch.js"></script> }}
- <body>
-    <div class="jumbotron jumbotron-fluid bg-dark text-white">
-      <div class="container">
-        <h1 class="display-4">GameReview</h1>
-    </div>
-      <div>
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a href="/" class="nav-link text-white">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link text-white">Sign In</a>
-          </li>
-        </ul>
-      </div>       
-    </div> 
-
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li
-      data-target="#carouselExampleIndicators"
-      data-slide-to="0"
-      class="active"
-    ></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="{{displayData.0.image}}" class="d-block w-100" alt="..." />
@@ -45,6 +14,12 @@
     </div>
     <div class="carousel-item">
       <img src="{{displayData.2.image}}" class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item">
+      <img src="{{displayData.3.image}}" class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item">
+      <img src="{{displayData.4.image}}" class="d-block w-100" alt="..." />
     </div>
   </div>
   <button
