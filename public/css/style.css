@@ -1,0 +1,11 @@
+.carousel {
+  margin: auto;
+  width: 45%;
+  max-height: 250px;
+  justify-content: center;
+}
+
+/* .carousel-control-prev-icon .carousel-control-next-icon {
+  position: relative;
+  margin: auto;
+} */
