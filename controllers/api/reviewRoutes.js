@@ -70,25 +70,26 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const updatedReview = await Review.update(
-    {
-      title: req.body.title,
-      review_body: req.body.review_body,
-      review_date: req.body.review_date,
-    },
-    {
-      where: {
-        review_id: req.params.review_id,
+  try {
+    const updatedReview = await Review.update(
+      {
+        review_body: req.body.review_body,
       },
-    }
-  );
-  res.json(updatedReview);
+      {
+        where: { id: req.params.id },
+      }
+    );
+
+    res.json(updatedReview);
+  } catch (error) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete("/:id", async (req, res) => {
   const deletedReview = await Review.destroy({
     where: {
-      review_id: req.params.review_id,
+      id: req.params.id,
     },
   });
   res.json(deletedReview);
