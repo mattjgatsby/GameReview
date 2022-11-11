@@ -1,49 +1,42 @@
-const { application, response } = require('express');
-const { json } = require('sequelize');
+const { application, response } = require("express");
+const { json } = require("sequelize");
 // const fetch = require('node-fetch');
-const axios = require('axios');
+const axios = require("axios");
 
+const router = require("express").Router();
+const { User, Review, Games } = require("../models");
+require("dotenv").config();
 
-const router = require('express').Router();
-const { User, Review, Games } = require('../models');
-require('dotenv').config();
+router.get("/", (req, res) => {
+  axios({
+    method: "get",
+    url: `https://api.rawg.io/api/games?key=${process.env.API_KEY}`,
+  })
+    .then((apiResponse) => {
+      // console.log(apiResponse);
 
-
-
-router.get('/', (req, res) => {
-
-    axios({
-        method: 'get',
-        url: `https://api.rawg.io/api/games?key=${process.env.API_KEY}`
+      let smallData = [];
+      for (let i = 0; i < 5; i++) {
+        let temp = {
+          name: apiResponse.data.results[i].name,
+          image: apiResponse.data.results[i].background_image,
+          metacritic: apiResponse.data.results[i].metacitic,
+        };
+        smallData.push(temp);
+      }
+      return smallData;
     })
-        .then(apiResponse => {
-            // console.log(apiResponse);
+    .then((displayData) => {
+      res.render("homepage", {
+        // pass the data to handlebars
+        displayData,
+      });
+    })
+    .catch((error) => console.log(error));
+});
 
-            let smallData = [];
-            for (let i = 0; i < 5; i++) {
-                let temp = {
-                    name: apiResponse.data.results[i].name,
-                    image: apiResponse.data.results[i].background_image,
-                    metacritic: apiResponse.data.results[i].metacitic
-                }
-                smallData.push(temp);
-            }
-            return smallData;
-        })
-        .then(displayData => {
-            res.render('homepage', {
-                // pass the data to handlebars
-                displayData,
-
-            })
-        })
-        .catch(error => console.log(error))
-})
-
-router.get('/login', (req, res) => {
-
-    res.render('login')
-
-})
+router.get("/login", (req, res) => {
+  res.render("login");
+});
 
 module.exports = router;
