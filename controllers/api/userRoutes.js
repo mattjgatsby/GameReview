@@ -81,13 +81,20 @@ router.delete('/:id', async (req, res) => {
 router.post('/login', async (req, res) => {
 
     try {
-        const userData = await User.findOne({ where: { email: req.body.user_name } });
+        console.log("inside login");
+        const userData = await User.findOne({ where: { user_name: req.body.user_name } });
+
+        console.log("db: " + userData);
+
         if (!userData) {
             res.status(404).json("User Not Found")
         }
 
-        let validPassword = userData.checkPassword(req.body.password);
+        console.log(userData.password);
 
+        let validPassword = await userData.checkPassword(req.body.userPassword);
+
+        console.log(validPassword);
         if (!validPassword) {
             res.status(400).json("Invalid password")
         }

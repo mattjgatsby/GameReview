@@ -1,19 +1,19 @@
-const { urlencoded } = require("express");
+// const { urlencoded } = require("express");
 
 const loginForm = async (event) => {
   event.preventDefault();
 
-  const userName = document.querySelector("#email-login").value.trim();
+  const user_name = document.querySelector("#user_name").value.trim();
   const userPassword = document.querySelector("#password-login").value.trim();
 
-  if (userName && userPassword) {
+  if (user_name && userPassword) {
     const response = await fetch("/api/users/login", {
       method: "POST",
-      body: JSON.stringify({ userName, userPassword }),
+      body: JSON.stringify({ user_name, userPassword }),
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/profile");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
@@ -34,7 +34,7 @@ const signpForm = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/profile");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
@@ -43,4 +43,4 @@ const signpForm = async (event) => {
 
 document.querySelector(".login-form").addEventListener("submit", loginForm);
 
-document.querySelector(".signup-form").addEventListener("submit", signpForm);
+// document.querySelector(".signup-form").addEventListener("submit", signpForm);

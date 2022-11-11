@@ -26,20 +26,11 @@ router.get('/', (req, res) => {
                     image: apiResponse.data.results[i].background_image,
                     metacritic: apiResponse.data.results[i].metacitic
                 }
-
-
                 smallData.push(temp);
-
-                // console.log("this is smalldata:  " + smallData);
-                // return smallData.json();
             }
-
             return smallData;
         })
         .then(displayData => {
-
-            // console.log("this is sent to handlebars   " + displayData);
-
             res.render('homepage', {
                 // pass the data to handlebars
                 displayData,
@@ -47,8 +38,12 @@ router.get('/', (req, res) => {
             })
         })
         .catch(error => console.log(error))
-
 })
 
+router.get('/login', (req, res) => {
+
+    res.render('login')
+
+})
 
 module.exports = router;
