@@ -6,7 +6,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -14,11 +13,37 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/css/style.css" />
 
-    <title>Hello, world!</title>
+    <title>GameReview</title>
   </head>
-  
+  <body>
+    <div class="jumbotron jumbotron-fluid bg-dark text-white">
+      <div class="container">
+        <h1 class="display-4">GameReview</h1>
+      </div>
+      <div>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a href="/" class="nav-link text-white">Home</a>
+          </li>
+
+          <li class="nav-item">
+            {{#if logged_in}}
+              <a href="/logout" class="nav-link text-white">Log Out</a>
+            {{else}}
+              <a href="/login" class="nav-link text-white">Sign In</a>
+            {{/if}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <main>{{{body}}}</main>
+
+    <footer>
+      <p>Powered by <a href="https://rawg.io/apidocs">RawG</a></p>
+    </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
