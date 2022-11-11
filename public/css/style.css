@@ -5,6 +5,16 @@
   justify-content: center;
 }
 
+.footer {
+  text-justify: center;
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  text-align: center;
+
+  margin: 0%;
+}
+
 /* .carousel-control-prev-icon .carousel-control-next-icon {
   position: relative;
   margin: auto;
