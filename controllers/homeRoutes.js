@@ -35,9 +35,9 @@ router.get("/", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-router.get("/games/:slug", async (req, res) => {
+router.get("/search", async (req, res) => {
   try {
-    const gamesData = await Games.findOne(req.params.slug, {
+    const gamesData = await Games.findOne(req.body.search, {
       include: [
         {
           model: Review,
@@ -48,7 +48,7 @@ router.get("/games/:slug", async (req, res) => {
     if (!gamesData) {
       axios({
         method: "get",
-        url: `https://api.rawg.io/api/games/${userinput}?key=${process.env.API_KEY}`,
+        url: `https://api.rawg.io/api/games/${req.body.search}?key=${process.env.API_KEY}`,
       })
         .then((response) => {
           return response.json();
