@@ -11,9 +11,10 @@ Games.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    games_name: {
+    slug: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     game_description: {
       type: DataTypes.STRING,

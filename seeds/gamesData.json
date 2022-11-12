@@ -1,6 +1,6 @@
 [
   {
-    "games_name": "Fake God of War",
+    "slug": "Fake God of War",
     "game_description": "This is a video game description string.",
     "release_date": "11-08-2022",
     "metacritic": 99,
@@ -10,7 +10,7 @@
     "user_id": 1
   },
   {
-    "games_name": "Call of Duty",
+    "slug": "Call of Duty",
     "game_description": "This is a video game description string.",
     "release_date": "11-01-2022",
     "metacritic": 90,
@@ -20,7 +20,7 @@
     "user_id": 2
   },
   {
-    "games_name": "Mr. Rogers",
+    "slug": "Mr. Rogers",
     "game_description": "This is a video game description string.",
     "release_date": "01-01-970",
     "metacritic": 100,
