@@ -35,6 +35,45 @@ router.get("/", (req, res) => {
     .catch((error) => console.log(error));
 });
 
+router.get("/games/:id", async (req, res) => {
+  try {
+    const gamesData = await Games.findByPk(req.params.id, {
+      include: [
+        {
+          model: Review,
+          attributes: ["id", "review_body", "review_date", "user_id"],
+        },
+      ],
+    });
+    if (!gamesData) {
+      const response = await axios({
+        method: "get",
+        url: `https://api.rawg.io/api/games/${userinput}?key=${process.env.API_KEY}`,
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((displayData) => {
+          res.render("gameRoutes", {
+            displayData,
+          });
+        })
+        .catch((err) => console.log(err));
+    }
+    // if (!gamesData) {
+    //   res.status(404).json({ message: "No Game found with this id" });
+    //   return;
+    // }
+    res.status(200).json(gamesData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/games", (req, res) => {
+  res.render("gameRoutes");
+});
+
 router.get("/login", (req, res) => {
   res.render("login");
 });
