@@ -15,6 +15,17 @@
   margin: 0%;
 }
 
+/* For carousel image sizing */
+.carousel-img {
+  max-height: 25em;
+  margin: auto;
+}
+
+/* For homepage large sign up text */
+.advertise {
+  text-align: center;
+}
+
 /* .carousel-control-prev-icon .carousel-control-next-icon {
   position: relative;
   margin: auto;

@@ -28,15 +28,22 @@
             <a href="/" class="nav-link text-white">Home</a>
           </li>
 
-          <li class="nav-item">
-            {{#if logged_in}}
+          {{#if logged_in}}
+            <li class="nav-item">
+              <a href="/dashboard" class="nav-link text-white">Dashboard</a>
+            </li>
+            <li class="nav-item">
               <a href="/logout" class="nav-link text-white">Log Out</a>
-              <a href="/games" class="nav-link text-white">search</a>
-            {{else}}
+            </li>
+            <li class="nav-item">
+              <a href="/games" class="nav-link text-white">Search</a>
+            </li>
+          {{else}}
+            <li class="nav-item">
               <a href="/login" class="nav-link text-white">Sign In</a>
-            {{/if}}
-            <a href="/games" class="nav-link text-white">search</a>
-          </li>
+            </li>
+          {{/if}}
+
         </ul>
       </div>
     </div>

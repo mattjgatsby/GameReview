@@ -1,27 +1,33 @@
-<!--Previously Searched Card-->
-<aside>
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">
-      Previously Searched
+<section class="col-12">
+  <!--Previously Searched Card-->
+  <div class="row d-flex justify-content-around mx-auto">
+    <div class="col-md-2">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Previously Searched
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-    </ul>
-  </div>
-</aside>
 
-<!--Card of Searched Games-->
-<div class="card w-75">
-  <img
-    src="{{short_screenshots}}"
-    class="card-img-top"
-    alt="Image of most recently searched game"
-  />
-  <div class="card-body">
-    <h5 class="card-title">{{games_name}}</h5>
-    <p class="card-text">{{games_description}}</p>
-    <a href="#" class="btn btn-primary"></a>
+    <!--Card of Searched Games-->
+    <div class="card" style="max-width: 700px;">
+      <div class="col-md-8">
+        <img
+          src="https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=300"
+          class="card-img-top"
+          alt="Image of most recently searched game"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Game Title: {{slug}}</h5>
+          <p class="card-text">Game Description: {{games_description}}</p>
+          <a href="#" class="btn btn-primary"></a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
