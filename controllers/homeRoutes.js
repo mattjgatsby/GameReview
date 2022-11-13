@@ -58,19 +58,10 @@ router.post("/search", async (req, res) => {
             game_description: response.data.description,
             release_date: response.data.released,
             metacitic: response.data.metacritic,
-            platforms: response.data.platforms,
-            // platforms: "temp test",
+            // platforms: response.data.platforms,
             background_image: response.data.background_image,
-            short_screenshots: response.data.website
-
+            // short_screenshots: response.data.website
           }
-          // slug
-          // game description
-          // release date
-          // metacritic
-          // platforms
-          // image
-          // short screenshots
           console.log(gameInfo);
           return gameInfo;
         })
