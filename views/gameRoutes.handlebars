@@ -1,52 +1,60 @@
-<div class="row">
-  <div class="col-md-2">
+<section class="col-12">
 
+    <div class="row d-flex justify-content-around mx-2">
+        <div class="col-md-2">
+            <nav class="navbar navbar-light bg-light">
+            <form class="form-inline searchForm">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search a game!" aria-label="Search" id="form-input">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
+            </form>
+            </nav>
+        </div>
 
-// search bar
-    <nav class="navbar navbar-light bg-light">
-  <form class="form-inline searchForm">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="form-input">
-    <button class="btn btn-outline-secondary my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
-  </form>
-</nav>
-
-
-<div class"row">
-    {{!-- // game and description card --}}
-    <div class="card mb-4" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="..." alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        {{!-- // game and description card --}}
+        <div class="card mb-4" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-5">
+                    <img src="..." alt="...">
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+   
 
-{{!-- // rating input form --}}
-<form>
-    <form class="form-inline">
-    <div class="form-group mb-2">
-        <label for="staticRating" class="sr-only">Rating</label>
-        <input type="text" readonly class="form-control-plaintext" id="staticRating" value="Your rating">
+        {{!-- // rating input form --}}
+        <div class="col-4">
+            <form>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <label for="staticRating" class="sr-only">Rating</label>
+                        <input type="text" readonly class="form-control-plaintext" id="staticRating" value="Your rating">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputRating" class="sr-only">Rating</label>
+                        <input type="number" class="form-control" id="inputRating" placeholder="Rating 1-100">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mb-2">Confirm Rating</button>
+                    </div>
+                </form>
+                {{!-- //review input --}}
+                <form>
+                    <div class="form-group mb-2">
+                        <label for="exampleFormControlTextarea1">Enter your review here!</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="text center">
+                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    </div>
+                </form>
+            </form>
+        </div>
     </div>
-    <div class="form-group mx-sm-3 mb-2">
-        <label for="inputRating" class="sr-only">Rating</label>
-        <input type="password" class="form-control" id="inputRating" placeholder="Rating 1-100">
-    </div>
-    <button type="submit" class="btn btn-primary mb-2">Confirm Rating</button>
-    {{!-- //review input --}}
-</form>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Enter your review here!</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-</form>
-
+</section>
 <script src="/js/game.js"></script>
