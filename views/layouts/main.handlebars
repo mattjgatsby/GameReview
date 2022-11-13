@@ -30,19 +30,19 @@
 
           {{#if logged_in}}
             <li class="nav-item">
+              <a href="/dashboard" class="nav-link text-white">Dashboard</a>
+            </li>
+            <li class="nav-item">
               <a href="/logout" class="nav-link text-white">Log Out</a>
             </li>
             <li class="nav-item">
-              <a href="/games" class="nav-link text-white">search</a>
+              <a href="/games" class="nav-link text-white">Search</a>
             </li>
           {{else}}
             <li class="nav-item">
               <a href="/login" class="nav-link text-white">Sign In</a>
             </li>
           {{/if}}
-          <li class="nav-item">
-            <a href="/games" class="nav-link text-white">search</a>
-          </li>
 
         </ul>
       </div>
