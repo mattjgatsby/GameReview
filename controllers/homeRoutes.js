@@ -52,6 +52,27 @@ router.post("/search", async (req, res) => {
       })
         .then((response) => {
           console.log(response);
+
+          let gameInfo = {
+            slug: response.data.slug,
+            game_description: response.data.description,
+            release_date: response.data.released,
+            metacitic: response.data.metacritic,
+            platforms: response.data.platforms,
+            // platforms: "temp test",
+            background_image: response.data.background_image,
+            short_screenshots: response.data.website
+
+          }
+          // slug
+          // game description
+          // release date
+          // metacritic
+          // platforms
+          // image
+          // short screenshots
+          console.log(gameInfo);
+          return gameInfo;
         })
         .then((displayData) => {
           res.render("gameRoutes", {
