@@ -37,14 +37,17 @@ router.get("/", (req, res) => {
 
 router.post("/search", async (req, res) => {
   try {
-    const gamesData = await Games.findOne({ where: { slug: req.body.search } }, {
-      include: [
-        {
-          model: Review,
-          attributes: ["id", "review_body", "review_date", "user_id"],
-        },
-      ],
-    });
+    const gamesData = await Games.findOne(
+      { where: { slug: req.body.search } },
+      {
+        include: [
+          {
+            model: Review,
+            attributes: ["id", "review_body", "review_date", "user_id"],
+          },
+        ],
+      }
+    );
     if (!gamesData) {
       axios({
         method: "get",
@@ -61,7 +64,7 @@ router.post("/search", async (req, res) => {
             // platforms: response.data.platforms,
             background_image: response.data.background_image,
             // short_screenshots: response.data.website
-          }
+          };
           console.log(gameInfo);
           return gameInfo;
         })
@@ -92,6 +95,10 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
   res.render("signup");
+});
+
+router.get("/dashboard", (req, res) => {
+  res.render("dashboard");
 });
 
 module.exports = router;
