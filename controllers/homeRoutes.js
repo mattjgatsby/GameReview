@@ -35,10 +35,12 @@ router.get("/", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-router.post("/search", async (req, res) => {
+router.get("/search", async (req, res) => {
   try {
+
+    console.log(req.query);
     const gamesData = await Games.findOne(
-      { where: { slug: req.body.search } },
+      { where: { slug: req.query.gametitle } },
       {
         include: [
           {
@@ -48,31 +50,26 @@ router.post("/search", async (req, res) => {
         ],
       }
     );
+    // let gameInfo;
     if (!gamesData) {
       axios({
         method: "get",
-        url: `https://api.rawg.io/api/games/${req.body.search}?key=${process.env.API_KEY}`,
+        url: `https://api.rawg.io/api/games/${req.query.gametitle}?key=${process.env.API_KEY}`,
       })
         .then((response) => {
-          // console.log(response);
-
-          //save all of it to session
-          // req.session.slug = response.data.slug;
 
           let gameInfo = {
             slug: response.data.slug,
-            game_description: response.data.description,
+            game_description: response.data.description_raw,
             release_date: response.data.released,
             metacitic: response.data.metacritic,
             // platforms: response.data.platforms,
             background_image: response.data.background_image,
             // short_screenshots: response.data.website
           };
+
           console.log(gameInfo);
-          res.render("gameInfo",
-            gameInfo
-          );
-          // return gameInfo;
+          res.json(gameInfo)
         })
         // .then((displayData) => {
         //   displayData = JSON.stringify(displayData)
@@ -82,11 +79,29 @@ router.post("/search", async (req, res) => {
         //   });
         // })
         .catch((err) => console.log(err));
+    } else {
+
+      // change to gamesData
+      let gameInfo = {
+        slug: gamesData.slug,
+        game_description: gamesData.description,
+        release_date: gamesData.released,
+        metacitic: gamesData.metacritic,
+        // platforms: gamesData.data.platforms,
+        background_image: gamesData.background_image,
+        // short_screenshots: gamesData.data.website
+      };
+      console.log("something else");
+      res.json(gameInfo)
     }
+
     // if (!gamesData) {
     //   res.status(404).json({ message: "No Game found with this id" });
     //   return;
     // }
+    // console.log("final", gameInfo);
+
+    // res.json("No game found.", gameInfo)
   } catch (err) {
     res.status(500).json(err);
   }

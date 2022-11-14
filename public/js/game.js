@@ -5,20 +5,33 @@ const searchForm = async (event) => {
     const search = document.querySelector('#form-input').value.trim();
     console.log("search" + search)
     if (search) {
-        const response = await fetch('/search', {
-            method: "POST",
-            body: JSON.stringify({ search }),
+        const response = await fetch(`/search?gametitle=${search}`, {
+            method: "GET",
+            // body: JSON.stringify({ search }),
             headers: { "Content-Type": "application/json" }
-        })
 
-        if (response.ok) {
-            // after post do a get 
-            // location.reload()
-            document.location.replace("/gameInfo")
-        } else {
-            alert(response.statusText)
-        }
+        })
+            .then((results) => {
+                // console.log(response);
+                return results.json();
+            })
+            .then((resultsData) => {
+                console.log("MEow", resultsData);
+                displayGameInfo();
+                // localStorage.setItem('game', JSON.stringify(results))
+                // document.location.replace("/gameInfo")
+
+            })
+        // .catch((err) => {
+        //     console.log(err);
+        // })
+
+
     }
 };
+
+function displayGameInfo() {
+
+}
 
 document.querySelector(".searchForm").addEventListener("submit", searchForm);
