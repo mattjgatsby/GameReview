@@ -2,6 +2,7 @@ const { application, response } = require("express");
 const { json } = require("sequelize");
 // const fetch = require('node-fetch');
 const axios = require("axios");
+const withAuth = require("../utils/auth");
 
 const router = require("express").Router();
 const { User, Review, Games } = require("../models");
@@ -37,7 +38,6 @@ router.get("/", (req, res) => {
 
 router.get("/search", async (req, res) => {
   try {
-
     console.log(req.query);
     const gamesData = await Games.findOne(
       { where: { slug: req.query.gametitle } },
@@ -57,7 +57,6 @@ router.get("/search", async (req, res) => {
         url: `https://api.rawg.io/api/games/${req.query.gametitle}?key=${process.env.API_KEY}`,
       })
         .then((response) => {
-
           let gameInfo = {
             slug: response.data.slug,
             game_description: response.data.description_raw,
@@ -69,7 +68,7 @@ router.get("/search", async (req, res) => {
           };
 
           console.log(gameInfo);
-          res.json(gameInfo)
+          res.json(gameInfo);
         })
         // .then((displayData) => {
         //   displayData = JSON.stringify(displayData)
@@ -80,7 +79,6 @@ router.get("/search", async (req, res) => {
         // })
         .catch((err) => console.log(err));
     } else {
-
       // change to gamesData
       let gameInfo = {
         slug: gamesData.slug,
@@ -92,7 +90,7 @@ router.get("/search", async (req, res) => {
         // short_screenshots: gamesData.data.website
       };
       console.log("something else");
-      res.json(gameInfo)
+      res.json(gameInfo);
     }
 
     // if (!gamesData) {
@@ -108,8 +106,8 @@ router.get("/search", async (req, res) => {
 });
 
 router.get("/gameInfo", (req, res) => {
-  res.render("gameInfo")
-})
+  res.render("gameInfo");
+});
 
 router.get("/games", (req, res) => {
   res.render("gameRoutes");
@@ -123,8 +121,14 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
+router.get("/dashboard", withAuth, (req, res) => {
+  // try {
+  //   const userData = await User.findByPk(req.session.user_id, {
+  //     attributes: { exclude: ['password']},
+  //     include: [{model: Review}],
+  //   })
+  // }
+  res.render("dashboard", { logged_in: true });
 });
 
 module.exports = router;
