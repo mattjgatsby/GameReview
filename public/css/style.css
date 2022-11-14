@@ -26,6 +26,10 @@
   text-align: center;
 }
 
+#game-description {
+  max-height: 200px;
+}
+
 /* .carousel-control-prev-icon .carousel-control-next-icon {
   position: relative;
   margin: auto;
