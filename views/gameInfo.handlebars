@@ -1,20 +1,10 @@
 <section class="col-12">
 
-    <div class="row d-flex justify-content-around mx-2">
-        <div class="col-md-2">
-            <nav class="navbar navbar-light bg-light">
-            <form class="form-inline searchForm">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search a game!" aria-label="Search" id="form-input">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
-            </form>
-            </nav>
-        </div>
-
         {{!-- // game and description card --}}
         <div class="card mb-4" style="max-width: 540px;">
             <div class="row no-gutters">
                 <div class="col-md-5">
-                    <img src="..." alt="...">
+                    <img src="{{background_image}}" alt="...">
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
@@ -57,4 +47,4 @@
         </div>
     </div>
 </section>
-<script src="/js/game.js"></script>
+{{!-- <script src="/js/game.js"></script> --}}

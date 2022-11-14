@@ -12,7 +12,9 @@ const searchForm = async (event) => {
         })
 
         if (response.ok) {
-            document.location.replace('/')
+            // after post do a get 
+            // location.reload()
+            document.location.replace("/gameInfo")
         } else {
             alert(response.statusText)
         }
