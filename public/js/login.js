@@ -13,33 +13,33 @@ const loginForm = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace("/dashboard");
     } else {
       alert(response.statusText);
     }
   }
 };
 
-const signpForm = async (event) => {
-  event.preventDefault();
+// const signpForm = async (event) => {
+//   event.preventDefault();
 
-  const userName = document.querySelector("#name-signup").value.trim();
-  const userPassword = document.querySelector("#password-signup").value.trim();
+//   const userName = document.querySelector("#name-signup").value.trim();
+//   const userPassword = document.querySelector("#password-signup").value.trim();
 
-  if (userName && userPassword) {
-    const response = await fetch("/api/users", {
-      method: "POST",
-      body: JSON.stringify({ userName, userPassword }),
-      headers: { "Content-Type": "application/json" },
-    });
+//   if (userName && userPassword) {
+//     const response = await fetch("/api/users", {
+//       method: "POST",
+//       body: JSON.stringify({ userName, userPassword }),
+//       headers: { "Content-Type": "application/json" },
+//     });
 
-    if (response.ok) {
-      document.location.replace("/");
-    } else {
-      alert(response.statusText);
-    }
-  }
-};
+//     if (response.ok) {
+//       document.location.replace("/");
+//     } else {
+//       alert(response.statusText);
+//     }
+//   }
+// };
 
 document.querySelector(".login-form").addEventListener("submit", loginForm);
 
