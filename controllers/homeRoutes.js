@@ -54,7 +54,10 @@ router.post("/search", async (req, res) => {
         url: `https://api.rawg.io/api/games/${req.body.search}?key=${process.env.API_KEY}`,
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
+
+          //save all of it to session
+          // req.session.slug = response.data.slug;
 
           let gameInfo = {
             slug: response.data.slug,
@@ -66,24 +69,32 @@ router.post("/search", async (req, res) => {
             // short_screenshots: response.data.website
           };
           console.log(gameInfo);
-          return gameInfo;
+          res.render("gameInfo",
+            gameInfo
+          );
+          // return gameInfo;
         })
-        .then((displayData) => {
-          res.render("gameRoutes", {
-            displayData,
-          });
-        })
+        // .then((displayData) => {
+        //   displayData = JSON.stringify(displayData)
+        //   console.log("Display:" + displayData);
+        //   res.render("gameRoutes", {
+        //     displayData,
+        //   });
+        // })
         .catch((err) => console.log(err));
     }
     // if (!gamesData) {
     //   res.status(404).json({ message: "No Game found with this id" });
     //   return;
     // }
-    res.status(200).json(gamesData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+router.get("/gameInfo", (req, res) => {
+  res.render("gameInfo")
+})
 
 router.get("/games", (req, res) => {
   res.render("gameRoutes");
