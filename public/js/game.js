@@ -29,8 +29,10 @@ const searchForm = async (event) => {
 function displayGameInfo(gameData) {
   let gameTitle = document.getElementById("game-title");
   let gameDescription = document.getElementById("game-description");
+  let gameImage = document.getElementById("game-image");
   gameTitle.textContent = gameData.slug;
   gameDescription.textContent = gameData.game_description;
+  gameImage.setAttribute("src", gameData.background_image);
 }
 
 document.querySelector(".searchForm").addEventListener("submit", searchForm);
