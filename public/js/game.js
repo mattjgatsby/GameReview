@@ -31,6 +31,18 @@ function displayGameInfo(gameData) {
   let gameDescription = document.getElementById("game-description");
   gameTitle.textContent = gameData.slug;
   gameDescription.textContent = gameData.game_description;
+
 }
 
+const reviewForm = async (event) => {
+  event.preventDefault();
+
+  // grab the rating || verify its filled in
+  // text content || verify its filled in
+  // game slug || 
+
+}
+
+
+// document.querySelector(".reviewForm").addEventListener("submit", reviewForm);
 document.querySelector(".searchForm").addEventListener("submit", searchForm);
