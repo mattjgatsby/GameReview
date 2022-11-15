@@ -58,36 +58,32 @@ router.get("/search", async (req, res) => {
       })
         .then((response) => {
           let gameInfo = {
+            title: response.data.name,
             slug: response.data.slug,
             game_description: response.data.description_raw,
             release_date: response.data.released,
-            metacitic: response.data.metacritic,
-            // platforms: response.data.platforms,
+            metacritic: response.data.metacritic,
             background_image: response.data.background_image,
-            // short_screenshots: response.data.website
+            gameId: 0
           };
+
+          // save to req session
+          req.session.slug = response.data.slug;
 
           console.log(gameInfo);
           res.json(gameInfo);
         })
-        // .then((displayData) => {
-        //   displayData = JSON.stringify(displayData)
-        //   console.log("Display:" + displayData);
-        //   res.render("gameRoutes", {
-        //     displayData,
-        //   });
-        // })
         .catch((err) => console.log(err));
     } else {
       // change to gamesData
       let gameInfo = {
+        title: gamesData.title,
         slug: gamesData.slug,
         game_description: gamesData.description,
         release_date: gamesData.released,
-        metacitic: gamesData.metacritic,
-        // platforms: gamesData.data.platforms,
+        metacritic: gamesData.metacritic,
         background_image: gamesData.background_image,
-        // short_screenshots: gamesData.data.website
+        gameId: gamesData.id
       };
       console.log("something else");
       res.json(gameInfo);

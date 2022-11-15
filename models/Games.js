@@ -11,6 +11,10 @@ Games.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     slug: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,22 +34,8 @@ Games.init(
     metacritic: {
       type: DataTypes.INTEGER,
     },
-    platforms: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     background_image: {
       type: DataTypes.STRING,
-    },
-    short_screenshots: {
-      type: DataTypes.STRING,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
     },
   },
   {

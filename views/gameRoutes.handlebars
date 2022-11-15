@@ -1,4 +1,3 @@
-<section class="col-12 overflow-auto">
 
   <div class="row d-flex justify-content-around mx-2">
     <div class="col-md-2">
@@ -21,10 +20,12 @@
     </div>
 
     {{! version2 game and description card }}
-    <div class="card" style="width: 50rem;">
+    <div class="card gameCard" style="width: 50rem;">
       <img id="game-image" src="..." class="card-img-top" alt="..." />
       <div class="card-body">
-        <h5 class="card-title" id="game-title">Game Title: {{slug}}</h5>
+        <h5 class="card-title" id="game-title" data-slug="{{slug}}" ="">Game Title: {{title}}</h5>
+        <h6 id="realeasedDate"></h6>
+        <h6 id="metacritic"></h6>
         <p class="card-text" id="game-description">Description:
           {{game_description}}</p>
       </div>
@@ -39,7 +40,7 @@
         <div class="col-md-7">
           <div class="card-body">
             <h5 class="card-title" id="game-title">Game Title:{{slug}} </h5>
-            <p class="card-text" id="game-description">Description:
+            <p class="card-text overflow-auto" id="game-description">Description:
               {{game_description}}
             </p>
             <p class="card-text"><small class="text-muted">Last updated 3 mins
@@ -51,8 +52,8 @@
 
     {{! // rating input form }}
     <div class="col-4">
-      <form>
-        <form class="form-inline">
+    
+        <form id="reviewForm" class="form-inline reviewForm">
           <div class="form-group mb-2">
             <label for="staticRating" class="sr-only">Rating</label>
             <input
@@ -71,26 +72,20 @@
               id="inputRating"
               placeholder="Rating 1-100"
             />
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary mb-2">Confirm Rating</button>
-          </div>
-        </form>
-        {{! //review input }}
-        <form>
-          <div class="form-group mb-2">
-            <label for="exampleFormControlTextarea1">Enter your review here!</label>
+             <label for="exampleFormControlTextarea1">Enter your review here!</label>
             <textarea
               class="form-control"
-              id="exampleFormControlTextarea1"
+              id="userReview"
               rows="3"
             ></textarea>
+             <div class="text center">
+                <button type="submit" class="btn btn-primary postReview mb-2">Submit</button>
+              </div>  
           </div>
-          <div class="text center">
-            <button type="submit" class="btn btn-primary mb-2">Submit</button>
-          </div>
+
         </form>
-      </form>
+
+
     </div>
   </div>
 </section>
