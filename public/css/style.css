@@ -30,6 +30,13 @@
   display: none;
 }
 
+
+
+#game-description {
+  max-height: 200px;
+  overflow: auto;
+}
+
 /* .carousel-control-prev-icon .carousel-control-next-icon {
   position: relative;
   margin: auto;
