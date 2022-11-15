@@ -36,7 +36,38 @@
   max-height: 200px;
   overflow: auto;
 }
+#title{
+position:relative;
+right: 20px;
+bottom: 35px;
+}
 
+.nav{
+  margin-right:50px;
+  font-size: 24px;
+  position: relative;
+  top: 50px;
+}
+
+#hm:hover{
+  text-decoration: underline;
+}
+
+#srch:hover{
+  text-decoration: underline;
+}
+
+#dash:hover{
+  text-decoration: underline;
+}
+
+#lo:hover{
+  text-decoration: underline;
+}
+
+#su:hover{
+  text-decoration: underline;
+}
 /* .carousel-control-prev-icon .carousel-control-next-icon {
   position: relative;
   margin: auto;

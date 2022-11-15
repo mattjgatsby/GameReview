@@ -1,6 +1,6 @@
-
+<section class="col-12">
   <div class="row d-flex justify-content-around mx-2">
-    <div class="col-md-2">
+    <div class="col-md-2 col-2">
       <nav class="navbar navbar-light bg-light">
         <form class="form-inline searchForm">
           <input
@@ -19,8 +19,9 @@
       </nav>
     </div>
 
+
     {{! version2 game and description card }}
-    <div class="card gameCard" style="width: 50rem;">
+    <div class="card gameCard col-4" style="width: 50rem;">
       <img id="game-image" src="..." class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title" id="game-title" data-slug="{{slug}}" ="">Game Title: {{title}}</h5>
@@ -30,6 +31,7 @@
           {{game_description}}</p>
       </div>
     </div>
+
 
     {{!-- {{! // game and description card }}
     <div class="card mb-4" style="max-width: 540px;">
@@ -64,6 +66,8 @@
               value="Your rating"
             />
           </div>
+        </form>
+        <form>
           <div class="form-group mx-sm-3 mb-2">
             <label for="inputRating" class="sr-only">Rating</label>
             <input
@@ -82,10 +86,7 @@
                 <button type="submit" class="btn btn-primary postReview mb-2">Submit</button>
               </div>  
           </div>
-
         </form>
-
-
     </div>
   </div>
 </section>
