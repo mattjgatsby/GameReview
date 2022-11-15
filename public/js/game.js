@@ -27,16 +27,20 @@ const searchForm = async (event) => {
 };
 
 function displayGameInfo(gameData) {
+  let gameCardEl = document.querySelector(".gameCard");
+  gameCardEl.style.display = "inline-block";
   let gameTitle = document.getElementById("game-title");
   let gameDescription = document.getElementById("game-description");
+  let gameImage = document.getElementById("game-image");
   gameTitle.textContent = gameData.slug;
   gameDescription.textContent = gameData.game_description;
-
+  gameImage.setAttribute("src", gameData.background_image);
 }
 
 const reviewForm = async (event) => {
   event.preventDefault();
 
+  console.log("Inside reviewForm");
   // grab the rating || verify its filled in
   let ratingEl = document.getElementById("staticRating");
   if (!ratingEl) {
@@ -46,8 +50,9 @@ const reviewForm = async (event) => {
 
   // game slug || 
 
+
 }
 
 
-document.querySelector(".reviewForm").addEventListener("submit", reviewForm);
+// document.querySelector(".reviewForm").addEventListener("submit", reviewForm);
 document.querySelector(".searchForm").addEventListener("submit", searchForm);

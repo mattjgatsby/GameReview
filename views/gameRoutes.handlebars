@@ -1,4 +1,3 @@
-<section class="col-12">
 
   <div class="row d-flex justify-content-around mx-2">
     <div class="col-md-2">
@@ -20,11 +19,21 @@
       </nav>
     </div>
 
-    {{! // game and description card }}
+    {{! version2 game and description card }}
+    <div class="card gameCard" style="width: 50rem;">
+      <img id="game-image" src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title" id="game-title">Game Title: {{slug}}</h5>
+        <p class="card-text" id="game-description">Description:
+          {{game_description}}</p>
+      </div>
+    </div>
+
+    {{!-- {{! // game and description card }}
     <div class="card mb-4" style="max-width: 540px;">
       <div class="row no-gutters">
         <div class="col-md-5">
-          <img src="..." alt="..." />
+          <img id="game-image" class="img-thumbnail" src="..." alt="..." />
         </div>
         <div class="col-md-7">
           <div class="card-body">
@@ -37,7 +46,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     {{! // rating input form }}
     <div class="col-4">
@@ -67,6 +76,9 @@
               id="exampleFormControlTextarea1"
               rows="3"
             ></textarea>
+             <div class="text center">
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+          </div>
           </div>
           
           {{!-- <div class="text-center">

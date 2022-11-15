@@ -26,6 +26,10 @@
   text-align: center;
 }
 
+.gameCard {
+  display: none;
+}
+
 /* .carousel-control-prev-icon .carousel-control-next-icon {
   position: relative;
   margin: auto;
