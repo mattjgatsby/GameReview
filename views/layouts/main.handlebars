@@ -20,26 +20,26 @@
   <body>
     <div class="jumbotron jumbotron-fluid bg-dark text-white">
       <div class="container">
-        <h1 class="display-4">GameReview</h1>
+        <h1 class="display-6">GameReview</h1>
       </div>
       <div>
         <ul class="nav justify-content-end">
-          <li class="nav-item">
+          <li id="hm" class="nav-item">
             <a href="/" class="nav-link text-white">Home</a>
           </li>
              </li>
-            <li class="nav-item">
+            <li id="srch" class="nav-item">
               <a href="/games" class="nav-link text-white">Search</a>
             </li>
 
           {{#if logged_in}}
-            <li class="nav-item">
+            <li id="dash" class="nav-item">
               <a href="/dashboard" class="nav-link text-white">Dashboard</a>
             </li>
-            <li class="nav-item">
+            <li id="lo" class="nav-item">
               <a href="/logout" class="nav-link text-white">Log Out</a>         
           {{else}}
-            <li class="nav-item">
+            <li id="su" class="nav-item">
               <a href="/signup" class="nav-link text-white">Sign Up</a>
             </li>
           {{/if}}
