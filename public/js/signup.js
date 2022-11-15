@@ -12,7 +12,7 @@ const signpForm = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/dashboard");
+      document.location.replace("/games");
     } else {
       alert(response.statusText);
     }
@@ -20,4 +20,3 @@ const signpForm = async (event) => {
 };
 
 document.querySelector(".signup-form").addEventListener("submit", signpForm);
-
