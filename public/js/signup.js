@@ -20,3 +20,4 @@ const signpForm = async (event) => {
 };
 
 document.querySelector(".signup-form").addEventListener("submit", signpForm);
+

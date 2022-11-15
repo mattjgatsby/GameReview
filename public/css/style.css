@@ -36,6 +36,11 @@
   max-height: 200px;
   overflow: auto;
 }
+#title{
+position:relative;
+right: 20px;
+bottom: 35px;
+}
 
 .nav{
   margin-right:50px;
